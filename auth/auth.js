@@ -13,7 +13,6 @@ function isLoggedIn (req, res, next) {
     jwt.verify(req.headers['token'], 'TOP_SECRET', (err, result) => {
       if (err) return res.send('Token not valid');
       else {
-        console.log(result);
         const user_id = result.user._id;
         UserModel.findOne({"_id": user_id}, (err, user) => { 
           if (err) res.send(err);

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Create a Room
+  form(method="POST", action="/rooms/create")
+    label(for="roomname") Room Name:
+    br
+    input(type="text", name="roomname")  
+    br
+    br
+    button(type="submit") Submit

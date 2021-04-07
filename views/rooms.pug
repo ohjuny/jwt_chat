@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Rooms
+  a(href="/rooms/create")
+    button(type="button") Create
+  p here is a list of all rooms:
+  if rooms.length == 0
+    i (None)
+  else
+    div(class="rooms")
+      each room in rooms 
+        div(class="room")
+          a(href="#")
+            h1= room.name
+          ul members:
+            if room.members.length == 0
+              li (None)
+            else
+              each member in room.members
+                li= member
+
+

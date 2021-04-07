@@ -7,6 +7,8 @@ body {
 .sidebar {
   float: left;
   width: 200px;
+  height: 100%;
+  display: fixed;
   text-align: right;
   padding-right: 20px;
   border: 2px dotted #7a1eb8;
@@ -33,6 +35,50 @@ body {
 
 .content {
   float:left;
+  width: calc(100% - 278px);
   border: 2px dotted #ccb806;
   padding-left: 50px;
+}
+
+.rooms {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.rooms a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.room {
+  width: 12em;
+  height: 8em;
+  background-color:#e6cb73;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  overflow: scroll;
+  border: 2px dotted #000000;
+}
+
+.room h1 {
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #b1ad90;
+  border-radius: 5px;
+}
+
+.room ul {
+  padding: 0;
+  color: #7a1eb8;
+}
+
+.room li {
+  list-style-type: none;
+  padding-left: 20px;
+  color: #888888;
 }

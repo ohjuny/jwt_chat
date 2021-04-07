@@ -16,6 +16,7 @@ require('./auth/auth');
 
 // import models
 const UserModel = require('./models/userModel');
+const RoomModel = require('./models/roomModel');
 
 // connect to mongo via mongoose
 mongoose.connect("mongodb://localhost:27017/node-chat", {useNewUrlParser: "true", useUnifiedTopology: true });
