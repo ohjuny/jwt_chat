@@ -104,13 +104,13 @@ router.get('/login', (req,res) => {
   res.render('login');
 });
 
-router.get('/logout', auth.isLoggedIn, (req,res) => {
-  // delete token from client http headers
-  delete req.headers['token'];
-  // place token on blacklist until it expires
+// router.get('/logout', auth.isLoggedIn, (req,res) => {
+//   // delete token from client http headers
+//   delete req.headers.authorization;
+//   // place token on blacklist until it expires
 
-  return res.redirect('/');
-});
+//   return res.redirect('/');
+// });
 
 // tutorial: 
 // https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
@@ -130,12 +130,10 @@ router.post('/login', async (req,res) => {
   // send jwt to client
   return res.json({token});
 
-  // messing around to figure out how to add token to header
-  // res.cookie('token', token);
-  // req.headers.push({key: 'token', value: token});
-  // console.log(req.headers);
+  // // messing around to figure out how to add token to header
+  // req.headers.authorization = token;
+  // console.log(req.headers.authorization);
   // return res.redirect('/');
-
 });
 
 module.exports = router;

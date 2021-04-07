@@ -7,54 +7,23 @@ const UserModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
 function isLoggedIn (req, res, next) {
-  if (!req.headers.authorization) next();
-  
-  const token = req.headers.authorization.replace('Bearer ','');
-  jwt.verify(token, 'TOP_SECRET', (err, result) => {
-    // if (err) return res.send('Token not valid');
-    if (err) next();
-    
-    UserModel.findOne({"_id": result.user._id}, (err, user) => { 
-      if (err) res.send(err);
+  if (!req.headers.authorization) {
+    next();
+  }
+  else {
+    const token = req.headers.authorization.replace('Bearer ','');
+    jwt.verify(token, 'TOP_SECRET', (err, result) => {
+      // if (err) return res.send('Token not valid');
+      if (err) next();
       
-      res.locals.user = user;
-      next();
-    });
-  });
-};
-  
-  // jwt.verify(req.headers['token'], 'TOP_SECRET', (err, result) => {
-  //   if (err) return res.send('Token not valid');
-  //   else {
-  //     const user_id = result.user._id;
-  //     UserModel.findOne({"_id": user_id}, (err, user) => { 
-  //       if (err) res.send(err);
+      UserModel.findOne({"_id": result.user._id}, (err, user) => { 
+        if (err) res.send(err);
         
-  //       res.locals.user = user;
-  //       next();
-  //     });
-  //   }
-  // })
-
-
-  // // check if token exists in header
-  // if ('token' in req.headers) {
-  //   // check if token is valid
-  //   jwt.verify(req.headers['token'], 'TOP_SECRET', (err, result) => {
-  //     if (err) return res.send('Token not valid');
-  //     else {
-  //       const user_id = result.user._id;
-  //       UserModel.findOne({"_id": user_id}, (err, user) => { 
-  //         if (err) res.send(err);
-          
-  //         res.locals.user = user;
-  //         next();
-  //       });
-  //     }
-  //   })
-  // }
-  // else next();
-  // // else res.redirect('/login');
-// };
+        res.locals.user = user;
+        next();
+      });
+    });
+  };
+};
 
 module.exports = {"isLoggedIn": isLoggedIn};
