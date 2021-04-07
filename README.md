@@ -1,0 +1,1 @@
+Project built using Node, Express, and MongoDB (through Mongoose). Trying to build a simple chat application with multiple users and multiple chat apps. Main focus in this project was implementing and experimenting with authentication using JWTs.

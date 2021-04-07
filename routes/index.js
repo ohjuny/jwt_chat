@@ -19,6 +19,7 @@ router.get('/', auth.isLoggedIn, function(req, res, next) {
 router.get('/rooms', auth.isLoggedIn, (req,res) => {
   Room.find({}, (err, rooms) => {
     if (err) res.send(err);
+    
     res.render('rooms', {
       rooms: rooms
     });
@@ -56,6 +57,15 @@ router.get('/room/:id', auth.isLoggedIn, (req,res) => {
     });
   });
 });
+
+router.delete('/room/:id', auth.isLoggedIn, (req,res) => {
+  Room.remove({'_id': req.params.id}, (err) => {
+    if (err) res.send(err);
+
+    return res.redirect('/rooms');
+  });
+});
+
 
 // --------- USER related routes v v
 
