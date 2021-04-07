@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Sign Up
+  form(method="POST", action="/signup")
+    label(for="username") Username:
+    br
+    input(type="text", name="username")  
+    br
+    label(for="username") Password:
+    br
+    input(type="password", name="password")  
+    br
+    label(for="username") First Name:
+    br
+    input(type="text", name="fname") 
+    br
+    label(for="username") Last Name:
+    br
+    input(type="text", name="lname") 
+    br
+    button(type="submit") Submit

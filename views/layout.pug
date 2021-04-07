@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title chat
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class="sidebar")
+      a(href="/")
+        h1 node<br>chat
+      ul
+        a(href="/")
+          li home
+        a(href="/users")
+          li users
+        a(href="/")
+          li rooms
+      hr
+      if user
+        ul 
+          a(href="")
+            li logout
+      else 
+        ul
+          a(href="/login")
+            li login 
+          a(href="/signup")
+            li sign up
+
+    div(class="content")
+      block content
