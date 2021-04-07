@@ -11,7 +11,7 @@ block content
     div(class="rooms")
       each room in rooms 
         div(class="room")
-          a(href="#")
+          a(href="/room/" + room._id)
             h1= room.name
           ul members:
             if room.members.length == 0

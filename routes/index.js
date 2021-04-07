@@ -46,9 +46,16 @@ router.post('/rooms/create', auth.isLoggedIn, (req,res) => {
   });
 });
 
-// router.get('/room/:id', auth.isLoggedIn, (req,res) => {
+router.get('/room/:id', auth.isLoggedIn, (req,res) => {
+  // console.log('room id: ', req.params.id);
+  Room.findOne({'_id': req.params.id}, (err, room) => {
+    if (err) res.send(err);
 
-// });
+    return res.render('room', {
+      room: room
+    });
+  });
+});
 
 // --------- USER related routes v v
 
